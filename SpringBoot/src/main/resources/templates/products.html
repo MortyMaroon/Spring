@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Products</h1>
+        <p>
+            <h5>Filter</h5>
+            <form method="get" th:action="@{'/products'}" class="row">
+                <div class="col-auto">
+                    <input class="form-control" th:value="${param.minPrice != null ? param.minPrice : ''}" type="number" placeholder="min price" name="minPrice"/>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" th:value="${param.maxPrice != null ? param.maxPrice : ''}" type="number" placeholder="max Price" name="maxPrice"/>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+            </form>
+        </p>
+        <p>
+            <h5>List product</h5>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${allProducts}">
+                    <td th:text="${product.id}"/>
+                    <td th:text="${product.title}"/>
+                    <td th:text="${product.price}"/>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{'/products/remove/' + ${product.id}}">Remove</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </p>
+        <p>
+            <h5>Add product</h5>
+            <form th:action="@{'/products/add'}" method="post" class="row">
+                <div >
+                    <input class="form-control" placeholder="Id" type="numder" name="id">
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Title" type="text" name="title">
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Price" type="numder" name="price">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Create</button>
+                </div>
+            </form>
+        </p>
+</div>
+
+</body>
+</html>
