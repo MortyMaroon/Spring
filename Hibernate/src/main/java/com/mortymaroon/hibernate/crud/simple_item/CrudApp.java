@@ -56,7 +56,7 @@ public class CrudApp {
         }
     }
 
-    public static void updateExample() {
+    public static void deleteExample() {
         try(Session session = factory.getCurrentSession()) {
             session.beginTransaction();
             SimpleItem simpleItem = session.get(SimpleItem.class, 1L);
@@ -65,7 +65,7 @@ public class CrudApp {
         }
     }
 
-    public static void deleteExample() {
+    public static void updateExample() {
         try(Session session = factory.getCurrentSession()) {
             session.beginTransaction();
             SimpleItem simpleItem = session.get(SimpleItem.class, 1L);
