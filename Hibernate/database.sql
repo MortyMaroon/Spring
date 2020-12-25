@@ -9,4 +9,13 @@ INSERT INTO simple_items (title, price) VALUES
 ('door', 50),
 ('camera', 500);
 
+DROP TABLE IF EXISTS products_tbl CASCADE;
+CREATE TABLE products_tbl (id_fld bigserial PRIMARY KEY, title_fld VARCHAR(255), price_fld int);
+INSERT INTO products_tbl (title_fld, price_fld) VALUES
+('TV', 800),
+('vacuum cleaner', 150),
+('fridge', 1200),
+('play station', 400),
+('camera', 500);
+
 COMMIT;

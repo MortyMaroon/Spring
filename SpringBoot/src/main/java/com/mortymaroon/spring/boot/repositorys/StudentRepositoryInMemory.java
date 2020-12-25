@@ -37,7 +37,9 @@ public class StudentRepositoryInMemory {
     }
 
     public Optional<Student> findById(Long id) {
-        return students.stream().filter(student -> student.getId().equals(id)).findFirst();
+        return students.stream().
+                filter(student -> student.getId().equals(id)).
+                findFirst();
     }
 
     public List<Student> findAll() {
