@@ -10,6 +10,7 @@
         <module name="SpringMVC" />
         <module name="Hibernate" />
         <module name="SpringBoot" />
+        <module name="ContextHibernate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
