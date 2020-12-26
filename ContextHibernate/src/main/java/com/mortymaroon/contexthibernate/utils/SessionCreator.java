@@ -2,6 +2,7 @@ package com.mortymaroon.contexthibernate.utils;
 
 import com.mortymaroon.contexthibernate.models.Customer;
 import com.mortymaroon.contexthibernate.models.Product;
+import com.mortymaroon.contexthibernate.models.Purchase;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -18,6 +19,7 @@ public class SessionCreator {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Product.class)
+                .addAnnotatedClass(Purchase.class)
                 .buildSessionFactory();
     }
 

@@ -2,6 +2,7 @@ package com.mortymaroon.contexthibernate.service;
 
 import com.mortymaroon.contexthibernate.models.Customer;
 import com.mortymaroon.contexthibernate.models.Product;
+import com.mortymaroon.contexthibernate.models.Purchase;
 import com.mortymaroon.contexthibernate.repository.CustomerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,5 +32,9 @@ public class CustomerService {
 
     public Customer saveOrUpdateCustomer(Customer customer) {
         return customerDAO.createOrUpdateCustomer(customer);
+    }
+
+    public List<Purchase> getPurchasesByIdCustomer(Long id) {
+        return customerDAO.getCustomerWithPurchaseById(id).getPurchases();
     }
 }

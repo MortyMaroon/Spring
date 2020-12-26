@@ -49,4 +49,14 @@ public class CustomerDAO {
         sessionCreator.finishTransaction(session);
         return  customer;
     }
+
+    public Customer getCustomerWithPurchaseById(Long id) {
+        Session session = sessionCreator.beginTransaction();
+        Customer customer = session
+                .createNamedQuery("Customer.withPurchase", Customer.class)
+                .setParameter("id",id)
+                .getSingleResult();
+        sessionCreator.finishTransaction(session);
+        return customer;
+    }
 }

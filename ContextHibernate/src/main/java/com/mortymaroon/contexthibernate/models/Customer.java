@@ -1,6 +1,5 @@
 package com.mortymaroon.contexthibernate.models;
 
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +7,8 @@ import java.util.List;
 @Table(name = "customers")
 @NamedQueries({
         @NamedQuery(name = "Customer.deleteById", query = "DELETE FROM Customer c WHERE c.id = :id"),
-        @NamedQuery(name = "Customer.withProducts", query = "SELECT c FROM Customer c JOIN FETCH c.products WHERE c.id = :id")
+        @NamedQuery(name = "Customer.withProducts", query = "SELECT c FROM Customer c JOIN FETCH c.products WHERE c.id = :id"),
+        @NamedQuery(name = "Customer.withPurchase", query = "SELECT c FROM Customer c JOIN FETCH c.purchases WHERE c.id = :id")
 })
 public class Customer {
     @Id
@@ -18,6 +18,9 @@ public class Customer {
 
     @Column(name = "title")
     private String title;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Purchase> purchases;
 
     @ManyToMany
     @JoinTable(
@@ -53,6 +56,14 @@ public class Customer {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchase) {
+        this.purchases = purchase;
     }
 
     public List<Product> getProducts() {

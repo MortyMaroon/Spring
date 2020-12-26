@@ -7,7 +7,8 @@ import java.util.List;
 @Table(name = "products")
 @NamedQueries({
         @NamedQuery(name = "Product.deleteById", query = "DELETE FROM Product p WHERE p.id = :id"),
-        @NamedQuery(name = "Product.withCustomer", query = "SELECT p FROM Product p JOIN FETCH p.customers WHERE p.id = :id")
+        @NamedQuery(name = "Product.withCustomer", query = "SELECT p FROM Product p JOIN FETCH p.customers WHERE p.id = :id"),
+        @NamedQuery(name = "Product.withPurchase", query = "SELECT p FROM Product p JOIN FETCH p.purchases WHERE p.id = :id")
 })
 public class Product {
     @Id
@@ -20,6 +21,9 @@ public class Product {
 
     @Column(name = "price")
     private int price;
+
+    @OneToMany(mappedBy = "product")
+    private List<Purchase> purchases;
 
     @ManyToMany
     @JoinTable(
@@ -65,6 +69,14 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchase) {
+        this.purchases = purchase;
     }
 
     public List<Customer> getCustomers() {
