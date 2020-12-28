@@ -1,4 +1,4 @@
-package com.mortymaroon.springdata.mortymaroon;
+package com.mortymaroon.springdata;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
