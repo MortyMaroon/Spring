@@ -11,6 +11,7 @@
     <modules>
         <module>SpringMVC</module>
         <module>ContextHibernate</module>
+        <module>SpringData</module>
     </modules>
 
     <properties>
