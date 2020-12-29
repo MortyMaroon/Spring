@@ -11,7 +11,7 @@
 	<groupId>com.mortymaroon.springdata</groupId>
 	<artifactId>mortymaroon</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mortymaroon</name>
+	<name>SpringData</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
